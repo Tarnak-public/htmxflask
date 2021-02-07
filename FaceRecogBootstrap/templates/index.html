@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Face Recognition</title>
+    <meta name="generator" content="WYSIWYG Web Builder 12 - http://www.wysiwygwebbuilder.com">
+    <link href="{{ url_for('static',filename='styles/WebForFaceRecognition.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='styles/index.css') }}" rel="stylesheet">
+    <!--    <script src="{{ url_for('static', filename='js/jquery-1.12.4.min.js') }}"></script>-->
+    <script src="{{ url_for('static', filename='js/htmx.js') }}"></script>
+    <!-- Bootstrap CSS -->
+    {{ bootstrap.load_css() }}
+</head>
+<body>
+<div id="Layer2" style="position:absolute;text-align:left;left:16px;top:15px;width:431px;height:480px;z-index:10;">
+</div>
+<div id="Layer1" style="position:absolute;text-align:left;left:460px;top:15px;width:431px;height:480px;z-index:11;">
+</div>
+<select name="ComboboxKnownFaces" size="14" id="ImagesInGalleryCombobox"
+        style="position:absolute;left:476px;top:99px;width:401px;height:234px;z-index:12;">
+</select>
+<div id="wb_Form1" style="position:absolute;left:476px;top:354px;width:401px;height:128px;z-index:13;">
+    <form hx-put="/loadImageToCompare" id="Form1" method="post" enctype="multipart/form-data">
+        <div id="FileUploadToGallery" class="input-group"
+             style="position:absolute;left:77px;top:14px;width:200px;height:16px;z-index:0;">
+            <input class="form-control" type="text" readonly="">
+            <label class="input-group-btn">
+                <input type="file" id="loadfile" name="loadfile" style="display:none;"
+                       accept="image/png, image/jpeg"><span class="btn">Browse...</span>
+            </label>
+        </div>
+        <!--        <label for="myfile">Select a file:</label>-->
+        <!--         <input type="file" id="myfile" name="myfile" style="display:none;"-->
+        <!--                       accept="image/png, image/jpeg">-->
+        <!--        <input type="file" id="myfile" name="myfile">-->
+        <label for="FileUploadToGallery" id="Label1"
+               style="position:absolute;left:10px;top:15px;width:33px;height:16px;line-height:16px;z-index:1;">File:</label>
+        <input type="submit" id="SubmitToGalleryButton" name="Submit Files" value="Add Image to gallery"
+               style="position:absolute;left:122px;top:88px;width:150px;height:25px;z-index:2;">
+        <label for="FileUploadToGallery" id="Label3"
+               style="position:absolute;left:10px;top:52px;width:51px;height:16px;line-height:16px;z-index:3;">Identity:</label>
+        <input type="text" id="NewNameForFaceEditbox"
+               style="position:absolute;left:77px;top:50px;width:194px;height:16px;line-height:16px;z-index:5;"
+               name="Editbox1" value="" spellcheck="false">
+    </form>
+</div>
+<select name="Gallery" size="1" id="GalleryCombobox"
+        style="position:absolute;left:545px;top:55px;width:332px;height:36px;z-index:14;" hx-post="/galleryComboBox"
+        hx-trigger="change">
+    <option value="krzys">krzys</option>
+</select>
+<label for="Label2" id="Label2"
+       style="position:absolute;left:476px;top:52px;width:56px;height:34px;line-height:34px;z-index:15;">Gallery:</label>
+<label for="Label4" id="Label4"
+       style="position:absolute;left:476px;top:13px;width:393px;height:34px;line-height:34px;z-index:16;">Known faces
+    list:</label>
+<input type="submit" id="RecognizeFaceButton" name="Recognize Face" value="Recognize Face"
+       style="position:absolute;left:12px;top:512px;width:881px;height:69px;z-index:17;">
+<div id="ImageToVerifyHtml" style="position:absolute;left:28px;top:54px;width:401px;height:278px;z-index:18">
+</div>
+<label for="Label5" id="Label5"
+       style="position:absolute;left:75px;top:15px;width:307px;height:31px;line-height:31px;z-index:19;">Face to
+    compare:</label>
+<div id="wb_Form2" style="position:absolute;left:28px;top:353px;width:401px;height:128px;z-index:20;">
+    <form name="uploadFormFiles" id="Form2">
+        <div id="group" style="position:absolute;left:28px;top:54px;width:401px;height:278px;z-index:18">
+            <img id="imageToCompare"
+                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">
+        </div>
+        <div id="FileUploadToCompare" class="input-group"
+             style="position:absolute;left:77px;top:14px;width:288px;height:16px;z-index:6;">
+            <input class="form-control" type="text" readonly="">
+            <label class="input-group-btn">
+                <input type="file" name="file[]" style="display:none;"><span class="btn">Browse...</span>
+            </label>
+        </div>
+        <label for="FileUploadToGallery" id="Label6"
+               style="position:absolute;left:10px;top:15px;width:33px;height:16px;line-height:16px;z-index:7;">File:</label>
+        <input type="submit" id="SubmitImageButton" name="Submit Files" value="Load File for comparison"
+               style="position:absolute;left:110px;top:89px;width:180px;height:25px;z-index:8;">
+    </form>
+</div>
+<textarea name="TextArea1" id="OutputTextArea"
+          style="position:absolute;left:12px;top:598px;width:871px;height:89px;z-index:21;" rows="4" cols="142" readonly
+          spellcheck="false"></textarea>
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+<!-- Optional JavaScript -->
+{{ bootstrap.load_js() }}
+</body>
+</html>

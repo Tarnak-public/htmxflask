@@ -7,20 +7,23 @@ import flask
 
 app = flask.Flask(__name__, static_url_path='/static')
 
+
 class User:
     id = 0
-    def __init__(self, fname, lname, email ):
-        User.id  += 1
-        self.id = User.id 
+
+    def __init__(self, fname, lname, email):
+        User.id += 1
+        self.id = User.id
         self.fname = fname
-        self.lname = lname 
+        self.lname = lname
         self.email = email
 
-    def search( self, word ):
+    def search(self, word):
         if (word is None):
             return False
         all = self.fname + self.lname + self.email
         return word.lower() in all.lower()
+
 
 users = [
     User("abe", "vida", "abe@nowhere.com"),
@@ -37,8 +40,9 @@ users = [
 
     User("juan", "vida", "juanvida@nowhere.com"),
     User("marty", "hinkle III", "mhinkle3@nowhere.com"),
-    User("zoe", "omega", "zoe@nowhere.com") 
+    User("zoe", "omega", "zoe@nowhere.com")
 ]
+
 
 @app.route("/")
 @app.route("/index.html")
@@ -60,8 +64,8 @@ def search():
     """
     searchWord = flask.request.form.get('search', None)
     matchusers = [user for user in users if user.search(searchWord)]
-    return flask.render_template_string(templ,users=matchusers)
+    return flask.render_template_string(templ, users=matchusers)
 
 
 if __name__ == '__main__':
-   app.run(debug = True)
+    app.run(debug=True)

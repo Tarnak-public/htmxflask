@@ -1,0 +1,429 @@
+body
+{
+   background-color: #FFFFFF;
+   color: #000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   line-height: 1.1875;
+   margin: 0;
+   padding: 0;
+}
+#Layer2
+{
+   background-color: #EEEEEE;
+   background-image: none;
+   border: 1px #4169E1 solid;
+   border-radius: 10px;
+}
+#Layer1
+{
+   background-color: #EEEEEE;
+   background-image: none;
+   border: 1px #4169E1 solid;
+   border-radius: 10px;
+}
+#FileUploadToGallery *
+{
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+#FileUploadToGallery{
+   display: table;
+   border-collapse: separate;
+}
+#FileUploadToGallery .form-control
+{
+   display: block;
+   width: 100%;
+   height: 26px;
+   line-height: 18px;
+   padding: 4px 4px 4px 4px;
+   font-family:Arial;
+   font-weight: normal;
+   font-size: 13px;
+   color: #555555;
+   background-color: #FFFFFF;
+   background-image: none;
+   border: 1px #CCCCCC solid;
+   border-radius: 4px;
+}
+#FileUploadToGallery .form-control
+{
+   position: relative;
+   z-index: 2;
+   float: left;
+   width: 100%;
+   margin-bottom: 0px;
+}
+#FileUploadToGallery label
+{
+   display: inline-block;
+   margin-bottom: 5px;
+   font-weight: 700;
+}
+#FileUploadToGallery .input-group-btn, FileUploadToGallery .form-control
+{
+   display: table-cell;
+}
+#FileUploadToGallery :first-child.form-control, FileUploadToGallery :first-child.input-group-btn > .btn, FileUploadToGallery :first-child.input-group-btn > .btn-group > .btn, FileUploadToGallery :last-child.input-group-btn > :not(:last-child):not(.dropdown-toggle).btn, FileUploadToGallery :last-child.input-group-btn > :not(:last-child).btn-group > .btn
+{
+   border-bottom-right-radius: 0px;
+   border-top-right-radius: 0px;
+}
+#FileUploadToGallery .input-group-btn
+{
+   width: 1%;
+   white-space: nowrap;
+   vertical-align: middle;
+   position: relative;
+   font-size: 0px;
+   white-space: nowrap;
+}
+#FileUploadToGallery .btn
+{
+   display: inline-block;
+   margin-bottom: 0px;
+   font-weight: 400;
+   text-align: center;
+   vertical-align: middle;
+   cursor: pointer;
+   background-color: #428BCA;
+   background-image: none;
+   border: 1px solid #357EBD;
+   color: #FFFFFF;
+   white-space: nowrap;
+   padding: 4px 8px 4px 8px;
+   font-family:Arial;
+   font-weight: normal;
+   font-size: 13px;
+   line-height: 18px;
+   border-radius: 4px;
+   height: 26px;
+}
+#FileUploadToGallery .input-group-btn > .btn
+{
+   position: relative;
+}
+#FileUploadToGallery :last-child.form-control, #FileUploadToGallery :last-child.input-group-btn > .btn, #FileUploadToGallery :last-child.input-group-btn > .btn-group > .btn, #FileUploadToGallery :first-child.input-group-btn > :not(:first-child).btn, FileUploadToGallery :first-child.input-group-btn > :not(:first-child).btn-group > .btn
+{
+   border-bottom-left-radius: 0px;
+   border-top-left-radius: 0px;
+}
+#FileUploadToGallery :last-child.input-group-btn > .btn, FileUploadToGallery :last-child.input-group-btn > .btn-group
+{
+   margin-left: -1px;
+}
+#ImagesInGalleryCombobox
+{
+   border: 1px #CCCCCC solid;
+   border-radius: 4px;
+   background-color: #FFFFFF;
+   background-image: none;
+   color: #000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   padding: 4px 4px 4px 4px;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+#ImagesInGalleryCombobox:focus
+{
+   border-color: #66AFE9;
+   -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   outline: 0;
+}
+#wb_Form1
+{
+   background-color: #FBFBFB;
+   background-image: none;
+   border: 0px #CCCCCC solid;
+}
+#Label1
+{
+   border: 0px #CCCCCC solid;
+   border-radius: 4px;
+   background-color: transparent;
+   background-image: none;
+   color :#000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   padding: 4px 4px 4px 4px;
+   text-align: left;
+   vertical-align: top;
+}
+#SubmitToGalleryButton
+{
+   border: 1px #2E6DA4 solid;
+   border-radius: 4px;
+   background-color: #3370B7;
+   background-image: none;
+   color: #FFFFFF;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+}
+#GalleryCombobox
+{
+   border: 1px #CCCCCC solid;
+   border-radius: 4px;
+   background-color: #FFFFFF;
+   background-image: none;
+   color: #000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   padding: 4px 4px 4px 4px;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+#GalleryCombobox:focus
+{
+   border-color: #66AFE9;
+   -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   outline: 0;
+}
+#Label2
+{
+   border: 0px #CCCCCC solid;
+   border-radius: 4px;
+   background-color: transparent;
+   background-image: none;
+   color :#000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   padding: 4px 4px 4px 4px;
+   text-align: left;
+   vertical-align: top;
+}
+#NewNameForFaceEditbox
+{
+   border: 1px #CCCCCC solid;
+   border-radius: 4px;
+   background-color: #FFFFFF;
+   background-image: none;
+   color :#000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   padding: 4px 4px 4px 4px;
+   text-align: left;
+   vertical-align: middle;
+}
+#NewNameForFaceEditbox:focus
+{
+   border-color: #66AFE9;
+   -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   outline: 0;
+}
+#Label3
+{
+   border: 0px #CCCCCC solid;
+   border-radius: 4px;
+   background-color: transparent;
+   background-image: none;
+   color :#000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   padding: 4px 4px 4px 4px;
+   text-align: left;
+   vertical-align: top;
+}
+#Label4
+{
+   border: 0px #CCCCCC solid;
+   border-radius: 4px;
+   background-color: transparent;
+   background-image: none;
+   color :#000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   padding: 4px 4px 4px 4px;
+   text-align: center;
+   vertical-align: top;
+}
+#RecognizeFaceButton
+{
+   border: 1px #2E6DA4 solid;
+   border-radius: 4px;
+   background-color: #3370B7;
+   background-image: none;
+   color: #FFFFFF;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+}
+#Label5
+{
+   border: 0px #CCCCCC solid;
+   border-radius: 4px;
+   background-color: transparent;
+   background-image: none;
+   color :#000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   padding: 4px 4px 4px 4px;
+   text-align: center;
+   vertical-align: top;
+}
+#wb_Form2
+{
+   background-color: #FBFBFB;
+   background-image: none;
+   border: 0px #CCCCCC solid;
+}
+#FileUploadToCompare *
+{
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+}
+#FileUploadToCompare{
+   display: table;
+   border-collapse: separate;
+}
+#FileUploadToCompare .form-control
+{
+   display: block;
+   width: 100%;
+   height: 26px;
+   line-height: 18px;
+   padding: 4px 4px 4px 4px;
+   font-family:Arial;
+   font-weight: normal;
+   font-size: 13px;
+   color: #555555;
+   background-color: #FFFFFF;
+   background-image: none;
+   border: 1px #CCCCCC solid;
+   border-radius: 4px;
+}
+#FileUploadToCompare .form-control
+{
+   position: relative;
+   z-index: 2;
+   float: left;
+   width: 100%;
+   margin-bottom: 0px;
+}
+#FileUploadToCompare label
+{
+   display: inline-block;
+   margin-bottom: 5px;
+   font-weight: 700;
+}
+#FileUploadToCompare .input-group-btn, FileUploadToCompare .form-control
+{
+   display: table-cell;
+}
+#FileUploadToCompare :first-child.form-control, FileUploadToCompare :first-child.input-group-btn > .btn, FileUploadToCompare :first-child.input-group-btn > .btn-group > .btn, FileUploadToCompare :last-child.input-group-btn > :not(:last-child):not(.dropdown-toggle).btn, FileUploadToCompare :last-child.input-group-btn > :not(:last-child).btn-group > .btn
+{
+   border-bottom-right-radius: 0px;
+   border-top-right-radius: 0px;
+}
+#FileUploadToCompare .input-group-btn
+{
+   width: 1%;
+   white-space: nowrap;
+   vertical-align: middle;
+   position: relative;
+   font-size: 0px;
+   white-space: nowrap;
+}
+#FileUploadToCompare .btn
+{
+   display: inline-block;
+   margin-bottom: 0px;
+   font-weight: 400;
+   text-align: center;
+   vertical-align: middle;
+   cursor: pointer;
+   background-color: #428BCA;
+   background-image: none;
+   border: 1px solid #357EBD;
+   color: #FFFFFF;
+   white-space: nowrap;
+   padding: 4px 8px 4px 8px;
+   font-family:Arial;
+   font-weight: normal;
+   font-size: 13px;
+   line-height: 18px;
+   border-radius: 4px;
+   height: 26px;
+}
+#FileUploadToCompare .input-group-btn > .btn
+{
+   position: relative;
+}
+#FileUploadToCompare :last-child.form-control, #FileUploadToCompare :last-child.input-group-btn > .btn, #FileUploadToCompare :last-child.input-group-btn > .btn-group > .btn, #FileUploadToCompare :first-child.input-group-btn > :not(:first-child).btn, FileUploadToCompare :first-child.input-group-btn > :not(:first-child).btn-group > .btn
+{
+   border-bottom-left-radius: 0px;
+   border-top-left-radius: 0px;
+}
+#FileUploadToCompare :last-child.input-group-btn > .btn, FileUploadToCompare :last-child.input-group-btn > .btn-group
+{
+   margin-left: -1px;
+}
+#Label6
+{
+   border: 0px #CCCCCC solid;
+   border-radius: 4px;
+   background-color: transparent;
+   background-image: none;
+   color :#000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   padding: 4px 4px 4px 4px;
+   text-align: left;
+   vertical-align: top;
+}
+#SubmitImageButton
+{
+   border: 1px #2E6DA4 solid;
+   border-radius: 4px;
+   background-color: #3370B7;
+   background-image: none;
+   color: #FFFFFF;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+}
+#OutputTextArea
+{
+   border: 1px #CCCCCC solid;
+   border-radius: 4px;
+   background-color: #FFFFFF;
+   background-image: none;
+   color :#000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   padding: 4px 4px 4px 4px;
+   text-align: left;
+   overflow: auto;
+   resize: none;
+}
+#OutputTextArea:focus
+{
+   border-color: #66AFE9;
+   -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
+   outline: 0;
+}

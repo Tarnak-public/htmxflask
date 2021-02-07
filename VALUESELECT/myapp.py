@@ -1,5 +1,7 @@
-import csv 
+import csv
+
 import flask
+
 # URLS Served:
 # / OR /index.html
 # /models/
@@ -14,6 +16,7 @@ with open("car.csv") as csvfile:
             mmdb[make] = []
         mmdb[make].append(model)
 
+
 @app.route('/models/', methods=['GET'])
 def getmodels():
     templ = """
@@ -24,6 +27,7 @@ def getmodels():
     models = mmdb[flask.request.args.get("makeselected")]
     return flask.render_template_string(templ, models=models)
 
+
 @app.route('/')
 @app.route('/index.html')
 def index():
@@ -31,5 +35,6 @@ def index():
     models = mmdb[makers[0]]
     return flask.render_template('index.html', models=models, makers=makers)
 
+
 if __name__ == '__main__':
-   app.run(debug = True)
+    app.run(debug=True)
