@@ -11,14 +11,14 @@ body
 }
 #Layer2
 {
-   background-color: #EEEEEE;
+   background-color: #C0C0C0;
    background-image: none;
    border: 1px #4169E1 solid;
    border-radius: 10px;
 }
 #Layer1
 {
-   background-color: #EEEEEE;
+   background-color: #C0C0C0;
    background-image: none;
    border: 1px #4169E1 solid;
    border-radius: 10px;
@@ -158,7 +158,7 @@ body
    text-align: left;
    vertical-align: top;
 }
-#SubmitToGalleryButton
+#SubmtToGalleryButton
 {
    border: 1px #2E6DA4 solid;
    border-radius: 4px;
@@ -426,4 +426,29 @@ body
    -moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
    outline: 0;
+}
+#Image1
+{
+   border: 0px #000000 solid;
+   padding: 0px 0px 0px 0px;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+}
+#Layer3
+{
+   background-color: #C0C0C0;
+   background-image: none;
+   border: 1px #4169E1 solid;
+   border-radius: 10px;
+}
+#Image3
+{
+   border: 0px #000000 solid;
+   padding: 0px 0px 0px 0px;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
 }

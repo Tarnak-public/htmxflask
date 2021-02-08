@@ -129,3 +129,7 @@ dmypy.json
 .pyre/
 
 VALUESELECT/.vscode/
+/.idea/
+/ACTIVESEARCH/Pipfile.lock
+/VALUESELECT/Pipfile.lock
+/FaceRecog/uploads/

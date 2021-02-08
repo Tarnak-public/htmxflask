@@ -2,11 +2,14 @@ import os
 import traceback
 
 import flask
-from flask import request
+import jyserver.Flask as jsf
+from flask import request, render_template
 from werkzeug.utils import secure_filename
 
 # File extension checking
 import FRServiceConnector
+
+gallery_name_krzys = 'krzys'
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS_IMAGES = {'jpeg', 'jpg', 'png'}
@@ -14,6 +17,27 @@ ALLOWED_EXTENSIONS_IMAGES = {'jpeg', 'jpg', 'png'}
 app = flask.Flask(__name__, static_url_path='/static')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_PATH'] = 1024 * 1000
+
+
+# https://dev.to/ftrias/access-js-dom-from-flask-app-using-jyserver-23h9
+@jsf.use(app)
+class App:
+    def reset(self):
+        pass
+        # self.start0 = time.time()
+        # self.js.dom.time.innerHTML = "{:.1f}".format(0)
+
+    @jsf.task
+    def main(self):
+        pass
+        # self.start0 = time.time()
+        # while True:
+        #     t = "{:.1f}".format(time.time() - self.start0)
+        #     self.js.dom.time.innerHTML = t
+        #     time.sleep(0.1)
+
+    def faces_gallery(self, gallery_list):
+        self.js.document.getElementById("ImagesInGalleryCombobox").innerHTML = '<option value="audi">Audi</option>'
 
 
 def allowed_filename(filename):
@@ -24,16 +48,30 @@ def upload_directory(filename):
     return os.path.join(app.config['UPLOAD_FOLDER'], filename)
 
 
-@app.route('/')
-@app.route('/index.html')
+# <option value="volvo">Volvo</option>
+# <option value="saab">Saab</option>
+
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index.html', methods=['GET', 'POST'])
 def index():
+    App.main()
     FRServiceConnector.setup_api_server()
-    return flask.render_template('index.html')
+    option_faces = FRServiceConnector.get_gallery_faces(gallery_name_krzys)
+    print("str=", option_faces)
+    # return flask.render_template('index.html')
+    main_page = App.render(render_template('index.html', gallery_options=option_faces))
+    return main_page
 
 
 @app.route('/loadImageToCompare', methods=['GET', 'POST'])
 def pressed_load_image_to_compare():
     print("loadImageToCompare")
+    return '', 204
+
+
+@app.route('/galleryFaceSelected', methods=['GET', 'POST'])
+def selected_gallery_item():
+    print("galleryFaceSelected")
     return '', 204
 
 

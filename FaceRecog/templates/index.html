@@ -16,14 +16,15 @@
 </div>
 <select name="ComboboxKnownFaces" size="14" id="ImagesInGalleryCombobox"
         style="position:absolute;left:476px;top:99px;width:401px;height:234px;z-index:12;">
-    <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
+    {% for x in gallery_options %}
+    <option hx-post="/galleryFaceSelected" value={{ x.uuid }}>{{ x.name }}</option>
+    {% endfor %}
 </select>
 <div id="wb_Form1" style="position:absolute;left:476px;top:354px;width:401px;height:128px;z-index:13;">
     <form id="Form1" method="post" enctype="multipart/form-data" action="submitAddToGallery">
         <div id="FileUploadToGallery" class="input-group"
              style="position:absolute;left:77px;top:14px;width:200px;height:16px;z-index:0;">
-            <input class="form-control" type="text" readonly=""  name = "addToGalleryTextbox" id="addToGalleryTextbox">
+            <input class="form-control" type="text" readonly="" name="addToGalleryTextbox" id="addToGalleryTextbox">
             <label class="input-group-btn">
                 <input hx-put="/selectedImageForGallery" hx-trigger="change" hx-target="#addToGalleryTextbox"
                        type="file" id="file" name="file" hx-swap="outerHTML"
@@ -39,6 +40,8 @@
         <input type="text" id="NewFaceNameEditbox" name="NewFaceNameEditbox"
                style="position:absolute;left:77px;top:50px;width:194px;height:16px;line-height:16px;z-index:5;"
                value="" spellcheck="false">
+        <div id="wb_Image1" style="position:absolute;left:289px;top:15px;width:99px;height:98px;z-index:6;">
+            <img src="{{ url_for('static', filename='images/Blank.png') }}" id="Image1" alt=""></div>
     </form>
 </div>
 <select name="Gallery" size="1" id="GalleryCombobox"
@@ -66,7 +69,7 @@
         </div>
         <div id="FileUploadToCompare" class="input-group"
              style="position:absolute;left:77px;top:14px;width:288px;height:16px;z-index:6;">
-            <input  class="form-control" type="text" readonly="">
+            <input class="form-control" type="text" readonly="">
             <label class="input-group-btn">
                 <input type="file" name="file[]" style="display:none;"><span class="btn">Browse...</span>
             </label>
@@ -80,6 +83,11 @@
 <textarea name="TextArea1" id="OutputTextArea"
           style="position:absolute;left:12px;top:598px;width:871px;height:89px;z-index:21;" rows="4" cols="142" readonly
           spellcheck="false"></textarea>
+<div id="Layer3" style="position:absolute;text-align:left;left:912px;top:15px;width:378px;height:480px;z-index:25;">
+    <div id="wb_Image3" style="position:absolute;left:50px;top:38px;width:278px;height:278px;z-index:11;">
+        <img src="{{ url_for('static', filename='images/Blank.png') }}" id="Image3" alt="">
+    </div>
+</div>
 <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>
