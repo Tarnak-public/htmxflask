@@ -6,7 +6,6 @@ import jyserver.Flask as jsf
 from flask import request, render_template
 from werkzeug.utils import secure_filename
 
-# File extension checking
 import FRServiceConnector
 
 gallery_name_krzys = 'krzys'
@@ -22,19 +21,26 @@ app.config['MAX_CONTENT_PATH'] = 1024 * 1000
 # https://dev.to/ftrias/access-js-dom-from-flask-app-using-jyserver-23h9
 @jsf.use(app)
 class App:
-    def reset(self):
-        pass
-        # self.start0 = time.time()
-        # self.js.dom.time.innerHTML = "{:.1f}".format(0)
 
     @jsf.task
     def main(self):
+        print("main() started")
+        self.js.document.getElementById("count").innerHTML = 5
         pass
-        # self.start0 = time.time()
-        # while True:
-        #     t = "{:.1f}".format(time.time() - self.start0)
-        #     self.js.dom.time.innerHTML = t
-        #     time.sleep(0.1)
+
+    def get_selected_face(self):
+        self.js.document.getElementById("ImagesInGalleryCombobox")
+        pass
+
+    @jsf.task
+    def update_preview_image(self, download_path):
+        # self.js.document.getElementById("Image3").outerHTML = '<img src="' + download_path + '" id="Image3" alt="">'
+        # self.js.document.getElementById( "Image3").innerHtml = '<img src="{{ url_for("static", filename="' + download_path + '") }}" id="Image3" alt="">'
+        # self.js.document.getElementById("Image3").src = download_path
+        # self.js.document.getElementById("OutputTextArea").value = "dupa"
+        print("update_preview_image() started")
+        self.js.document.getElementById("count").innerHTML = 10
+        print("update_preview_image() finished")
 
     def faces_gallery(self, gallery_list):
         self.js.document.getElementById("ImagesInGalleryCombobox").innerHTML = '<option value="audi">Audi</option>'
@@ -48,18 +54,19 @@ def upload_directory(filename):
     return os.path.join(app.config['UPLOAD_FOLDER'], filename)
 
 
-# <option value="volvo">Volvo</option>
-# <option value="saab">Saab</option>
+def update_preview_image_own():
+
+    pass
+
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index.html', methods=['GET', 'POST'])
 def index():
     App.main()
-    FRServiceConnector.setup_api_server()
+
     option_faces = FRServiceConnector.get_gallery_faces(gallery_name_krzys)
-    print("str=", option_faces)
-    # return flask.render_template('index.html')
     main_page = App.render(render_template('index.html', gallery_options=option_faces))
+    # App.update_preview_image("")
     return main_page
 
 
@@ -72,6 +79,9 @@ def pressed_load_image_to_compare():
 @app.route('/galleryFaceSelected', methods=['GET', 'POST'])
 def selected_gallery_item():
     print("galleryFaceSelected")
+    face_guid = request.form['ComboboxKnownFaces']
+    print("selected face: " + face_guid)
+    FRServiceConnector.get_faces_image(gallery_name_krzys, face_guid)
     return '', 204
 
 

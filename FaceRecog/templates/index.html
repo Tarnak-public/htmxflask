@@ -14,10 +14,12 @@
 </div>
 <div id="Layer1" style="position:absolute;text-align:left;left:460px;top:15px;width:431px;height:480px;z-index:11;">
 </div>
-<select name="ComboboxKnownFaces" size="14" id="ImagesInGalleryCombobox"
+<select name="ComboboxKnownFaces" size="14" id="ImagesInGalleryCombobox" hx-post="/galleryFaceSelected"
+        hx-trigger="change"
         style="position:absolute;left:476px;top:99px;width:401px;height:234px;z-index:12;">
     {% for x in gallery_options %}
-    <option hx-post="/galleryFaceSelected" value={{ x.uuid }}>{{ x.name }}</option>
+    <option value={{ x.uuid }}>{{ x.name }}</option>
+    <!--    <option hx-post="/galleryFaceSelected" value={{ x.uuid }}>{{ x.name }}</option>-->
     {% endfor %}
 </select>
 <div id="wb_Form1" style="position:absolute;left:476px;top:354px;width:401px;height:128px;z-index:13;">
@@ -88,6 +90,7 @@
         <img src="{{ url_for('static', filename='images/Blank.png') }}" id="Image3" alt="">
     </div>
 </div>
+<p id="count">0</p>
 <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>

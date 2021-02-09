@@ -2,3 +2,4 @@ Flask
 htmx
 yattag
 jyserver
+pillow
