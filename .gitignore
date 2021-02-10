@@ -132,4 +132,5 @@ VALUESELECT/.vscode/
 /.idea/
 /ACTIVESEARCH/Pipfile.lock
 /VALUESELECT/Pipfile.lock
-/FaceRecog/uploads/
+
+/FaceRecog/static/uploads/preview.jpeg

@@ -52,7 +52,8 @@ def get_faces_image(gallery, face_guid):
         return
     # show_response("get_image_from_gallery() Body:", response)
     picture = Image.open(io.BytesIO(base64.b64decode(b64_image)))
-    download_path = myapp.upload_directory("preview.jpeg")
+    download_path = myapp.upload_static_directory("preview.jpeg")
     picture.save(download_path, "JPEG")
-    myapp.App.update_preview_image(download_path)
+    # myapp.App.update_preview_image(download_path)
     # myapp.update_preview_image_own()
+    return download_path

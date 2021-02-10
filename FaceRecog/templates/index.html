@@ -8,6 +8,10 @@
     <link href="{{ url_for('static',filename='styles/index.css') }}" rel="stylesheet">
     <script src="{{ url_for('static', filename='js/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/htmx.js') }}"></script>
+    <script type="text/javascript"
+            src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/sijax/sijax.js"></script>
+    <script type="text/javascript">{{ g.sijax.get_js()|safe }} </script>
 </head>
 <body>
 <div id="Layer2" style="position:absolute;text-align:left;left:16px;top:15px;width:431px;height:480px;z-index:10;">
@@ -15,7 +19,7 @@
 <div id="Layer1" style="position:absolute;text-align:left;left:460px;top:15px;width:431px;height:480px;z-index:11;">
 </div>
 <select name="ComboboxKnownFaces" size="14" id="ImagesInGalleryCombobox" hx-post="/galleryFaceSelected"
-        hx-trigger="change"
+        hx-trigger="change" hx-target="#Image3" hx-swap="outerHTML"
         style="position:absolute;left:476px;top:99px;width:401px;height:234px;z-index:12;">
     {% for x in gallery_options %}
     <option value={{ x.uuid }}>{{ x.name }}</option>
@@ -89,8 +93,11 @@
     <div id="wb_Image3" style="position:absolute;left:50px;top:38px;width:278px;height:278px;z-index:11;">
         <img src="{{ url_for('static', filename='images/Blank.png') }}" id="Image3" alt="">
     </div>
+    <a href="javascript://" onclick="Sijax.request('say_hi');">Click here</a>
 </div>
 <p id="count">0</p>
-<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/index.js') }}">
+</script>
 </body>
 </html>

@@ -1,9 +1,10 @@
 import os
+import time
 import traceback
 
 import flask
-import jyserver.Flask as jsf
-from flask import request, render_template
+import flask_sijax
+from flask import request, render_template, g
 from werkzeug.utils import secure_filename
 
 import FRServiceConnector
@@ -13,37 +14,14 @@ gallery_name_krzys = 'krzys'
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS_IMAGES = {'jpeg', 'jpg', 'png'}
 
+path = os.path.join('.', os.path.dirname(__file__), 'static/js/sijax/')
+
 app = flask.Flask(__name__, static_url_path='/static')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_PATH'] = 1024 * 1000
-
-
-# https://dev.to/ftrias/access-js-dom-from-flask-app-using-jyserver-23h9
-@jsf.use(app)
-class App:
-
-    @jsf.task
-    def main(self):
-        print("main() started")
-        self.js.document.getElementById("count").innerHTML = 5
-        pass
-
-    def get_selected_face(self):
-        self.js.document.getElementById("ImagesInGalleryCombobox")
-        pass
-
-    @jsf.task
-    def update_preview_image(self, download_path):
-        # self.js.document.getElementById("Image3").outerHTML = '<img src="' + download_path + '" id="Image3" alt="">'
-        # self.js.document.getElementById( "Image3").innerHtml = '<img src="{{ url_for("static", filename="' + download_path + '") }}" id="Image3" alt="">'
-        # self.js.document.getElementById("Image3").src = download_path
-        # self.js.document.getElementById("OutputTextArea").value = "dupa"
-        print("update_preview_image() started")
-        self.js.document.getElementById("count").innerHTML = 10
-        print("update_preview_image() finished")
-
-    def faces_gallery(self, gallery_list):
-        self.js.document.getElementById("ImagesInGalleryCombobox").innerHTML = '<option value="audi">Audi</option>'
+app.config['SIJAX_STATIC_PATH'] = path
+app.config['SIJAX_JSON_URI'] = '/static/js/sijax/json2.js'
+flask_sijax.Sijax(app)
 
 
 def allowed_filename(filename):
@@ -54,19 +32,25 @@ def upload_directory(filename):
     return os.path.join(app.config['UPLOAD_FOLDER'], filename)
 
 
-def update_preview_image_own():
+def upload_static_directory(filename):
+    return "static/uploads/" + filename
 
-    pass
 
-
-@app.route('/', methods=['GET', 'POST'])
-@app.route('/index.html', methods=['GET', 'POST'])
+# @app.route('/', methods=['GET', 'POST'])
+# @app.route('/index.html', methods=['GET', 'POST'])
+@flask_sijax.route(app, '/')
+@flask_sijax.route(app, '/index.html')
 def index():
-    App.main()
+    def say_hi(obj_response):
+        obj_response.alert('Hi there!')
+
+    if g.sijax.is_sijax_request:
+        # Sijax request detected - let Sijax handle it
+        g.sijax.register_callback('say_hi', say_hi)
+        return g.sijax.process_request()
 
     option_faces = FRServiceConnector.get_gallery_faces(gallery_name_krzys)
-    main_page = App.render(render_template('index.html', gallery_options=option_faces))
-    # App.update_preview_image("")
+    main_page = render_template('index.html', gallery_options=option_faces)
     return main_page
 
 
@@ -81,8 +65,12 @@ def selected_gallery_item():
     print("galleryFaceSelected")
     face_guid = request.form['ComboboxKnownFaces']
     print("selected face: " + face_guid)
-    FRServiceConnector.get_faces_image(gallery_name_krzys, face_guid)
-    return '', 204
+    file_path = FRServiceConnector.get_faces_image(gallery_name_krzys, face_guid)
+    # return '<img src="../' + file_path + '" id="Image3" alt="">'
+    # return '<img src="{{ url_for("static", filename="' + upload_directory(file_path)"uploads/preview.jpeg" + '") }}" id="Image3" alt="">'
+    # return '<img src=' + '"uploads/preview.jpeg"' + ' id="Image3" alt="">'
+    return '<img src="' + file_path + "?empty=" + str(time.time_ns()) + '" id="Image3" alt="" class="resize">'
+    # return '', 204
 
 
 @app.route('/galleryComboBox', methods=['GET', 'POST'])
@@ -94,7 +82,7 @@ def pressed_gallery_combobox():
 @app.route('/selectedImageForGallery', methods=['GET', 'POST'])
 def pressed_file_selector_gallery():
     print("selectedImageForGallery: ", request.form['file'])
-    path, filename = os.path.split(request.form['file'])
+    file_path, filename = os.path.split(request.form['file'])
     print("selectedImageForGallery: ", filename)
     return '<input class="form-control" type="text" readonly="" id="addToGalleryTextbox" value = "' + filename + '">'
 
