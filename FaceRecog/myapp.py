@@ -66,11 +66,7 @@ def selected_gallery_item():
     face_guid = request.form['ComboboxKnownFaces']
     print("selected face: " + face_guid)
     file_path = FRServiceConnector.get_faces_image(gallery_name_krzys, face_guid)
-    # return '<img src="../' + file_path + '" id="Image3" alt="">'
-    # return '<img src="{{ url_for("static", filename="' + upload_directory(file_path)"uploads/preview.jpeg" + '") }}" id="Image3" alt="">'
-    # return '<img src=' + '"uploads/preview.jpeg"' + ' id="Image3" alt="">'
     return '<img src="' + file_path + "?empty=" + str(time.time_ns()) + '" id="Image3" alt="" class="resize">'
-    # return '', 204
 
 
 @app.route('/galleryComboBox', methods=['GET', 'POST'])
